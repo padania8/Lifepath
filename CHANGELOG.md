@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2026-02-12
+
+- Sync French web assets to Android and iOS native projects.
+- Android strings.xml: app name set to "Chemin de vie".
+- iOS Info.plist: display name set to "Chemin de vie", region set to "fr".
+
 ## [1.1.0] - 2026-02-12
 
 - French UI, localized PWA name, red/gold theme.

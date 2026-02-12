@@ -5,9 +5,9 @@
     <key>CAPACITOR_DEBUG</key>
 	<string>$(CAPACITOR_DEBUG)</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>fr</string>
 	<key>CFBundleDisplayName</key>
-        <string>lifepath</string>
+	<string>Chemin de vie</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
