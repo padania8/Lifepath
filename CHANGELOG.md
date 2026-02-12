@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2026-02-12
+
+- Red/orange theme applied across web, Android, and iOS.
+- Updated theme-color meta, manifest colors, icon SVG, and service worker cache.
+- GPL-3.0 license footer added to UI.
+
 ## [1.2.0] - 2026-02-12
 
 - Sync French web assets to Android and iOS native projects.

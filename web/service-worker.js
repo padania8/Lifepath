@@ -1,4 +1,4 @@
-const CACHE_NAME = "chemin-de-vie-cache-v1";
+const CACHE_NAME = "chemin-de-vie-cache-v2";
 const ASSETS = [
   "/",
   "/index.html",

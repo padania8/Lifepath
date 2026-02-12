@@ -3,8 +3,8 @@
   "short_name": "Chemin de vie",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#0e1c1f",
-  "theme_color": "#0e1c1f",
+  "background_color": "#3a0a0a",
+  "theme_color": "#3a0a0a",
   "icons": [
     {
       "src": "icon-192.png",
