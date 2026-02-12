@@ -1,4 +1,4 @@
-const CACHE_NAME = "lifepath-cache-v1";
+const CACHE_NAME = "chemin-de-vie-cache-v1";
 const ASSETS = [
   "/",
   "/index.html",

@@ -2,10 +2,15 @@ const form = document.getElementById("lifepath-form");
 const birthdateInput = document.getElementById("birthdate");
 const result = document.getElementById("result");
 const detail = document.getElementById("detail");
+const debtOutput = document.getElementById("debt");
+
+const karmicDebtNumbers = new Set([13, 14, 16, 19]);
 
 const clearResult = () => {
   result.textContent = "";
   detail.textContent = "";
+  debtOutput.textContent = "";
+  result.classList.remove("result--debt");
 };
 
 const sumDigits = (value) => {
@@ -24,29 +29,44 @@ const reduceToSingleDigit = (value) => {
   return reduced;
 };
 
-const buildDetail = (digits) => {
+const getReductionSteps = (digits) => {
+  const steps = [];
+  let total = sumDigits(digits);
+  steps.push(total);
+  while (total > 9) {
+    total = sumDigits(total);
+    steps.push(total);
+  }
+  return steps;
+};
+
+const buildDetail = (digits, steps) => {
   const parts = digits.split("");
-  const initialSum = sumDigits(digits);
-  let breakdown = `${parts.join(" + ")} = ${initialSum}`;
-  let reduced = initialSum;
-  while (reduced > 9) {
-    const nextParts = String(reduced).split("");
-    const nextSum = sumDigits(reduced);
-    breakdown += ` -> ${nextParts.join(" + ")} = ${nextSum}`;
-    reduced = nextSum;
+  let breakdown = `${parts.join(" + ")} = ${steps[0]}`;
+  for (let i = 1; i < steps.length; i += 1) {
+    const nextParts = String(steps[i - 1]).split("");
+    breakdown += ` -> ${nextParts.join(" + ")} = ${steps[i]}`;
   }
   return breakdown;
 };
 
+const getKarmicDebt = (steps) =>
+  steps.find((step) => karmicDebtNumbers.has(step)) ?? null;
+
 const calculateLifepath = (dateString) => {
   const digits = dateString.replace(/\D/g, "");
   if (!digits) {
-    return { value: "", detail: "" };
+    return { value: "", detail: "", debt: null };
   }
-  const initialSum = sumDigits(digits);
+  if (digits.length !== 8) {
+    return { value: "", detail: "", debt: null };
+  }
+  const steps = getReductionSteps(digits);
+  const debt = getKarmicDebt(steps);
   return {
-    value: reduceToSingleDigit(initialSum),
-    detail: buildDetail(digits),
+    value: steps[steps.length - 1],
+    detail: buildDetail(digits, steps),
+    debt,
   };
 };
 
@@ -60,6 +80,13 @@ form.addEventListener("submit", (event) => {
   const lifepath = calculateLifepath(dateValue);
   result.textContent = lifepath.value;
   detail.textContent = lifepath.detail;
+  if (lifepath.debt) {
+    result.classList.add("result--debt");
+    debtOutput.textContent = `Dette karmique: ${lifepath.debt}/${reduceToSingleDigit(lifepath.debt)}`;
+  } else {
+    result.classList.remove("result--debt");
+    debtOutput.textContent = "";
+  }
 });
 
 birthdateInput.addEventListener("input", () => {
