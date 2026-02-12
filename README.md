@@ -22,3 +22,4 @@ Offline single-page app that calculates a lifepath number from a birthdate.
 
 - The calculation reduces all date digits to a single digit (1-9).
 - Results are not stored and are cleared on reload or close.
+- Service worker caching stores same-origin, successful GET responses only.

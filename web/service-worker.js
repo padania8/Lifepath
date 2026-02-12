@@ -40,6 +40,9 @@ self.addEventListener("fetch", (event) => {
         return cached;
       }
       return fetch(event.request).then((response) => {
+        if (!response.ok || response.type !== "basic") {
+          return response;
+        }
         const responseClone = response.clone();
         caches.open(CACHE_NAME).then((cache) => {
           cache.put(event.request, responseClone);

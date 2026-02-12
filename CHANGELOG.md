@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2026-02-12
+
+- Harden service worker cache to store same-origin successful responses only.
+
 ## [1.0.0] - 2026-02-12
 
 - Initial release.
