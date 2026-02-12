@@ -1,0 +1,6 @@
+{
+  "appId": "com.luciafranco.lifepath",
+  "appName": "lifepath",
+  "webDir": "web",
+  "bundledWebRuntime": false
+}

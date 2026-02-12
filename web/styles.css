@@ -1,0 +1,171 @@
+:root {
+  color-scheme: light;
+  --bg: #0e1c1f;
+  --bg-accent: #17323a;
+  --card: #f3efe6;
+  --card-shadow: rgba(10, 20, 22, 0.35);
+  --text: #0f1618;
+  --accent: #c4472d;
+  --accent-strong: #8f2a17;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  color: var(--text);
+  background: radial-gradient(circle at top, #254d57, var(--bg) 55%),
+    radial-gradient(circle at 20% 80%, #2a5d4f 0%, transparent 55%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+}
+
+.page {
+  width: min(560px, 100%);
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.card {
+  background: linear-gradient(140deg, #fff7ea, var(--card));
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 28px 50px var(--card-shadow);
+  display: grid;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0.28;
+  filter: blur(0.5px);
+  animation: drift 7s ease-in-out infinite;
+}
+
+.card::before {
+  width: 180px;
+  height: 180px;
+  background: #f2b4a3;
+  top: -80px;
+  right: -60px;
+}
+
+.card::after {
+  width: 220px;
+  height: 220px;
+  background: #f6d36f;
+  bottom: -120px;
+  left: -90px;
+  animation-delay: 1s;
+}
+
+h1 {
+  font-size: 2.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+  z-index: 1;
+}
+
+.label {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+input[type="date"] {
+  border: 2px solid #2c3b3e;
+  border-radius: 16px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  background: #fffef9;
+  color: var(--text);
+}
+
+.action {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px rgba(196, 71, 45, 0.28);
+}
+
+.result {
+  min-height: 64px;
+  display: grid;
+  place-items: center;
+  font-size: clamp(2.6rem, 10vw, 4rem);
+  font-weight: 700;
+  color: var(--accent-strong);
+  z-index: 1;
+}
+
+.detail {
+  min-height: 28px;
+  text-align: center;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  color: #2f3d3f;
+  z-index: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+@media (max-width: 520px) {
+  .card {
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .label {
+    letter-spacing: 0.15em;
+  }
+}
