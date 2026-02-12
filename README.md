@@ -18,6 +18,11 @@ Offline single-page app that calculates a lifepath number from a birthdate.
 
 - Debug APK output: Apps/Android/lifepath-debug.apk
 
+## iOS
+
+- The iOS project is included under ios/.
+- On macOS with Xcode 26.0+: run `npm install`, then `npx cap sync ios`, then `npx cap open ios` and build in Xcode.
+
 ## Notes
 
 - The calculation reduces all date digits to a single digit (1-9).
