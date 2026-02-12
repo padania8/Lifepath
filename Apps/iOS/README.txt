@@ -1,4 +1,4 @@
-iOS build requires a Mac with Xcode.
+iOS build requires a Mac with Xcode 26.0+ (Capacitor 8 requirement).
 
 Steps on macOS:
 1) Install Xcode and run it once.
