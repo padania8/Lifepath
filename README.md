@@ -29,3 +29,8 @@ Offline single-page app that calculates a lifepath number from a birthdate.
 - Karmic debt numbers detected: 13/4, 14/5, 16/7, 19/1.
 - Results are not stored and are cleared on reload or close.
 - Service worker caching stores same-origin, successful GET responses only.
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 (GPL-3.0).
+See the LICENSE file for details.

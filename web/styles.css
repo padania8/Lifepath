@@ -156,6 +156,21 @@ input[type="text"] {
   z-index: 1;
 }
 
+.license {
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7a1d12;
+  z-index: 1;
+}
+
+.license a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
