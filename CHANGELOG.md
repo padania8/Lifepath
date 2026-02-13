@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2026-02-13
+
+- Multilingual support: 30+ languages with browser auto-detection.
+- 6 element themes: Earth, Spirit, Metal, Air, Water, Fire.
+- Master numbers (11, 22, 33) detection with dedicated indicators.
+- Interactive legend with color-coded master/debt/lifepath markers.
+- Settings panel with language selector and theme switcher.
+- Synced all web assets to Android and iOS native projects.
+- Clean-rebuilt Android APK with latest code.
+- Created iOS source archive (Apps/iOS/Lifepath-iOS-Source.zip) for macOS compilation.
+- Updated distributable APK in Apps/Android/.
+- Updated README with full feature list, download links, and project structure.
+
 ## [1.3.0] - 2026-02-12
 
 - Red/orange theme applied across web, Android, and iOS.

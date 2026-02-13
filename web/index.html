@@ -3,13 +3,168 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#3a0a0a" />
+    <meta name="theme-color" content="#0d0f1a" />
     <title>Calculateur de chemin de vie</title>
     <link rel="manifest" href="manifest.json" />
     <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Devanagari:wght@400;700&family=Noto+Serif+Bengali:wght@400;700&family=Noto+Serif+Thai:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Serif+Hebrew:wght@400;700&family=Noto+Serif+Ethiopic:wght@400;700&family=Noto+Serif+CJK+SC:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=3" />
   </head>
   <body>
+    <button id="settings-toggle" class="settings-toggle" aria-label="Settings">&#9881;</button>
+    <div id="settings-overlay" class="settings-overlay"></div>
+    <aside id="settings-panel" class="settings-panel" role="dialog" aria-label="Settings">
+      <div class="settings-title" data-i18n="settings">R\u00e9glages</div>
+
+      <div class="settings-group">
+        <div class="settings-group-label" data-i18n="language">Langue</div>
+        <select id="lang-select" class="lang-select">
+          <option value="af">Afrikaans</option>
+          <option value="ak">Akan</option>
+          <option value="sq">Shqip (Albanian)</option>
+          <option value="am">አማርኛ (Amharic)</option>
+          <option value="ar">العربية (Arabic)</option>
+          <option value="hy">Հայերեն (Armenian)</option>
+          <option value="az">Azərbaycanca</option>
+          <option value="eu">Euskara (Basque)</option>
+          <option value="be">Беларуская</option>
+          <option value="bn">বাংলা (Bengali)</option>
+          <option value="bs">Bosanski</option>
+          <option value="br">Brezhoneg</option>
+          <option value="bg">Български</option>
+          <option value="my">မြန်မာ (Burmese)</option>
+          <option value="ca">Català</option>
+          <option value="zh">中文 (Chinese)</option>
+          <option value="hr">Hrvatski</option>
+          <option value="cs">Čeština</option>
+          <option value="da">Dansk</option>
+          <option value="nl">Nederlands</option>
+          <option value="en">English</option>
+          <option value="eo">Esperanto</option>
+          <option value="et">Eesti</option>
+          <option value="ee">Eʋegbe</option>
+          <option value="fi">Suomi (Finnish)</option>
+          <option value="fr" selected>Français</option>
+          <option value="fy">Frysk</option>
+          <option value="gl">Galego</option>
+          <option value="ka">ქართული (Georgian)</option>
+          <option value="de">Deutsch</option>
+          <option value="el">Ελληνικά</option>
+          <option value="gu">ગુજરાતી</option>
+          <option value="ha">Hausa</option>
+          <option value="he">עברית (Hebrew)</option>
+          <option value="hi">हिन्दी</option>
+          <option value="hu">Magyar</option>
+          <option value="is">Íslenska</option>
+          <option value="ig">Igbo</option>
+          <option value="id">Bahasa Indonesia</option>
+          <option value="ia">Interlingua</option>
+          <option value="ga">Gaeilge</option>
+          <option value="it">Italiano</option>
+          <option value="ja">日本語 (Japanese)</option>
+          <option value="jv">Basa Jawa</option>
+          <option value="kn">ಕನ್ನಡ</option>
+          <option value="kk">Қазақ</option>
+          <option value="km">ខ្មែរ</option>
+          <option value="rw">Kinyarwanda</option>
+          <option value="ko">한국어 (Korean)</option>
+          <option value="ku">Kurdî</option>
+          <option value="ky">Кыргызча</option>
+          <option value="lo">ລາວ</option>
+          <option value="lv">Latviešu</option>
+          <option value="ln">Lingála</option>
+          <option value="lt">Lietuvių</option>
+          <option value="lb">Lëtzebuergesch</option>
+          <option value="mk">Македонски</option>
+          <option value="mg">Malagasy</option>
+          <option value="ms">Bahasa Melayu</option>
+          <option value="ml">മലയാളം</option>
+          <option value="mt">Malti</option>
+          <option value="mi">Te Reo Māori</option>
+          <option value="mr">मरराठी</option>
+          <option value="mn">Монгол</option>
+          <option value="ne">नेपाली</option>
+          <option value="nb">Norsk Bokmål</option>
+          <option value="nn">Norsk Nynorsk</option>
+          <option value="oc">Occitan</option>
+          <option value="or">ଓଡ଼ିଆ</option>
+          <option value="om">Oromoo</option>
+          <option value="ps">پښتو (Pashto)</option>
+          <option value="fa">فارسی (Persian)</option>
+          <option value="pl">Polski</option>
+          <option value="pt">Português</option>
+          <option value="pa">ਪੰਜਾਬੀ</option>
+          <option value="qu">Runasimi (Quechua)</option>
+          <option value="ro">Română</option>
+          <option value="ru">Русский</option>
+          <option value="sm">Gagana Sāmoa</option>
+          <option value="gd">Gàidhlig</option>
+          <option value="sr">Српски</option>
+          <option value="sn">ChiShona</option>
+          <option value="sd">سنڌي</option>
+          <option value="si">සිංහල</option>
+          <option value="sk">Slovenčina</option>
+          <option value="sl">Slovenščina</option>
+          <option value="so">Soomaali</option>
+          <option value="st">Sesotho</option>
+          <option value="es">Español</option>
+          <option value="su">Basa Sunda</option>
+          <option value="sw">Kiswahili</option>
+          <option value="sv">Svenska</option>
+          <option value="tl">Tagalog</option>
+          <option value="tg">Тоҷикӣ</option>
+          <option value="ta">தமிழ்</option>
+          <option value="tt">Татарча</option>
+          <option value="te">తెలుగు</option>
+          <option value="th">ไทย (Thai)</option>
+          <option value="bo">བོད་སྐད (Tibetan)</option>
+          <option value="ti">ትግርኛ</option>
+          <option value="tr">Türkçe</option>
+          <option value="tk">Türkmen</option>
+          <option value="uk">Українська</option>
+          <option value="ur">اردو</option>
+          <option value="ug">ئۇيغۇرچە</option>
+          <option value="uz">O‘zbek</option>
+          <option value="vi">Tiếng Việt</option>
+          <option value="cy">Cymraeg</option>
+          <option value="wo">Wolof</option>
+          <option value="xh">IsiXhosa</option>
+          <option value="yi">ייִדיש</option>
+          <option value="yo">Yorùbá</option>
+          <option value="zu">IsiZulu</option>
+          <option value="ht">Kreyòl Ayisyen</option>
+        </select>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-group-label" data-i18n="theme">Th\u00e8me \u00e9l\u00e9ment</div>
+        <div class="theme-grid">
+          <button class="theme-btn active" data-theme="earth">
+            <span class="theme-icon">&#127757;</span>Terre
+          </button>
+          <button class="theme-btn" data-theme="spirit">
+            <span class="theme-icon">&#10024;</span>Esprit
+          </button>
+          <button class="theme-btn" data-theme="metal">
+            <span class="theme-icon">&#9876;</span>M\u00e9tal
+          </button>
+          <button class="theme-btn" data-theme="air">
+            <span class="theme-icon">&#127744;</span>Air
+          </button>
+          <button class="theme-btn" data-theme="water">
+            <span class="theme-icon">&#127754;</span>Eau
+          </button>
+          <button class="theme-btn" data-theme="fire">
+            <span class="theme-icon">&#128293;</span>Feu
+          </button>
+        </div>
+      </div>
+
+      <button id="settings-close" class="settings-close" data-i18n="close">Fermer</button>
+    </aside>
+
     <main class="page">
       <section class="card" aria-labelledby="title">
         <h1 id="title">Calculateur de chemin de vie</h1>
@@ -27,15 +182,35 @@
           />
           <button type="submit" class="action">Calculer</button>
         </form>
-        <output id="detail" class="detail" aria-live="polite"></output>
-        <output id="result" class="result" aria-live="polite"></output>
-        <output id="debt" class="debt" aria-live="polite"></output>
+        <div id="detail" class="detail-box" aria-live="polite"></div>
+        <div class="results-container">
+          <output id="result" class="result" aria-live="polite"></output>
+          <output id="master-result" class="result result--master" aria-live="polite" hidden></output>
+          <output id="debt" class="debt" aria-live="polite" hidden></output>
+        </div>
+        <div class="legend" id="legend" hidden>
+          <p class="legend-title" data-i18n="legend">Légende</p>
+          <div class="legend-items">
+            <div class="legend-item">
+              <span class="legend-swatch legend-swatch--master"></span>
+              <span data-i18n="legendMaster">11, 22, 33 — Nombres maîtres</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-swatch legend-swatch--debt"></span>
+              <span data-i18n="legendDebt">13, 14, 16, 19 — Dettes karmiques (jour)</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-swatch legend-swatch--lifepath"></span>
+              <span data-i18n="legendLifepath">1–9 — Chemin de vie</span>
+            </div>
+          </div>
+        </div>
         <footer class="license" aria-label="License">
           Licence: GPL-3.0. Voir
           <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">gnu.org/licenses</a>.
         </footer>
       </section>
     </main>
-    <script src="app.js"></script>
+    <script src="app.js?v=3"></script>
   </body>
 </html>
