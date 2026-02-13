@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2026-02-13
+
+- New app icon (head/globe silhouette) applied to all platforms:
+  - Web: icon-180, icon-192, icon-512.
+  - Android: all mipmap densities (mdpi–xxxhdpi), launcher, round, and adaptive foreground.
+  - iOS: AppIcon 1024×1024.
+- Adaptive icon background set to beige (#D4C9B8).
+- Rebuilt Android APK and updated distributable in Apps/Android/ and OneDrive.
+- Updated iOS source archive (Apps/iOS/Lifepath-iOS-Source.zip) with new icon.
+
 ## [1.4.0] - 2026-02-13
 
 - Multilingual support: 30+ languages with browser auto-detection.
